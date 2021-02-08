@@ -1,0 +1,273 @@
+body{
+    font-size: 18px;
+    margin: auto;
+    width: 100%;
+    font-family: 'Roboto';
+
+}
+.container{
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    
+}
+
+
+header{
+    height: 100px;
+    background-color: #F3E9F1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.logo{
+    width: 150px;
+    height: 68px;
+}
+
+
+.card{
+    margin-right: 3%;
+    margin-bottom: 3%;
+   
+}
+
+
+
+.card:nth-child(1){
+    margin-top: 3%;
+}
+
+.card:nth-child(2){
+    margin-top: 3%;
+}
+
+.card:nth-child(3){
+    margin-top: 3%;
+}
+
+.card:nth-child(4){
+   
+}
+
+
+.card-body{
+    background-color: #F3E9F1;
+    
+}
+
+.card-body p:nth-child(3){
+    font-weight: bold;
+}
+
+.teddyimage{
+    width: 90%;
+    height: 90%;
+}
+.article{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 100px;
+    margin: auto;
+    display: flex;
+    
+}
+
+#td{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.linkcart{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: flex;
+}
+
+.label{
+    padding-right: 30px;
+}
+
+#choice{
+    margin-top: 15px;
+}
+
+#productdisplay{
+margin-top: 3%;
+margin-bottom: 5%;
+}
+
+footer{
+    background-color: #F3E9F1;
+    padding-top: 2%;
+    padding-bottom:2% ;
+    display: flex;
+    justify-content:space-around ;
+    padding-top: 3%;
+    margin-top: 4%;
+}
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+footer ul li a:hover{
+    color: black;
+}
+
+.add-cart{
+    text-decoration: none;
+    color: black;
+    background-color: #FFFFFF;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 7px;
+    margin-top: 15px;
+    font-size: 15px;
+}
+#choice{
+    padding: 5px;
+    font-size: 15px;
+}
+
+/* PAGE DU PANIER */
+
+.product-header{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px black solid;
+}
+
+.fa-shopping-bag{
+    font-size: 40px;
+    margin-right: 6px;
+}
+.cart span{
+    color:#eb6ec5;
+    position: relative;
+    right:-23px;
+    top: 16px;
+    font-weight:bold;
+}
+.cart p{
+    margin-top: 18px;
+}
+
+.cart a:hover {
+    text-decoration: none;
+    color: black;
+
+}
+
+.titleitems{
+    display: flex;
+    justify-content: space-around;
+    border: 1px #000000 solid;
+    border-bottom: none;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.titleitems h6:nth-child(2){
+    margin-left: 10%;
+}
+.titleitems h6:nth-child(3){
+    margin-left: 10%;
+}
+
+.items{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    border: 1px black solid;
+    background-color: #FFFFFF;
+}
+
+.items span:nth-child(1){
+text-align: center;
+align-items: center;
+    width: 30%;
+}
+
+.items span:nth-child(2){
+
+    width: 25%;
+    margin-left: 10%;
+}
+
+.items span:nth-child(3){
+
+    width: 30%;
+    margin-left: 10%;
+}
+
+
+
+.products-container{
+    display: flex;
+    margin-top: 3%;
+    margin-bottom: 3%; 
+}
+
+.contains{
+    margin-left: 10%;
+    background-color: #F3E9F1;
+    border:35px #F3E9F1 solid;
+    border-radius: 20px;
+    width: 90%;
+
+}
+
+.teddies{
+    width: 100%;
+    background-color: #F3E9F1;
+    border:35px #F3E9F1 solid;
+    border-radius: 20px;
+    
+}
+
+.basketTotalContainer{
+    text-align: end;
+    margin-top: 4%;
+}
+
+.template{
+    width: 100%;
+     
+}
+.template h4{
+    margin-bottom: 6%;
+}
+
+#form h4{
+    margin-bottom: 6%;
+}
+
+.messagecontainer{
+
+    width: 47%;
+    text-align: center;
+    margin: auto;
+    margin-top: 4%;
+    padding-top: 5%;
+    
+}
+
+.linkOrinoco{
+color: black;
+}
+.color-container{
+    background-color: #faf4f9;
+    padding-bottom: 5%;
+    border-radius: 4%;
+    
+}
