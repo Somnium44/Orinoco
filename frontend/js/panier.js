@@ -62,7 +62,7 @@ console.log(data);
         
         
     }
-    
+     onLoadCartNumbers()
     // Affichage du nombre de produit dans le local storage // Affichage de la totalité des descriptions du produit dans le local storage
     function setItems(product){
         let cartItems = localStorage.getItem('Quantity');
@@ -139,149 +139,137 @@ console.log(data);
                 </div>
            </div>
             `
-        });
-        productContainer.innerHTML +=`
-        <div class= "basketTotalContainer">
-        <h5 class= "basketTotalTitle">
-        SOUS TOTAL
-        </h5>
-        <h5 class= "basketTotal"></h5>
-            ${cartCost/ 100}.00€
-        </div>
-        `
+                });
+                productContainer.innerHTML +=`
+                <div class= "basketTotalContainer">
+                <h5 class= "basketTotalTitle">
+                SOUS TOTAL
+                </h5>
+                <h5 class= "basketTotal"></h5>
+                    ${cartCost/ 100}.00€
+                </div>
+                `
 
-        contains.innerHTML +=`
-        <div #form>
-        <h4>Adresse de livraison</h4>
-        <form class="row g-3 form" action="post" type="submit"">
-  <div class="col-md-4">
-    <label for="validationServer01" class="form-label">Nom</label>
-    <input type="text" class="form-control is-valid" id="lastname" name="lastname" value="" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-4">
-    <label for="validationServer02" class="form-label">Prénom</label>
-    <input type="text" class="form-control is-valid" id="firstname" name="firtname" value="" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
- 
-  <div class="col-md-6">
-    <label for="validationServer03" class="form-label">Ville</label>
-    <input type="text" class="form-control is-invalid" id="city" name="city" aria-describedby="validationServer03Feedback" required>
-    <div id="validationServer03Feedback" class="invalid-feedback">
-    Oups ! Vous devez saisir votre ville ici.
-    </div>
-  </div>
-  
-  <div class="col-md-3">
-    <label for="validationServer05" class="form-label">Code postal</label>
-    <input type="text" class="form-control is-invalid" id="adress" name="address" aria-describedby="validationServer05Feedback" required>
-    <div id="validationServer05Feedback" class="invalid-feedback">
-    Oups ! Vous devez saisir votre code postal ici
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" name="email">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-      <label class="form-check-label" for="invalidCheck3">
-        Agree to terms and conditions
-      </label>
-      <div id="invalidCheck3Feedback" class="reduce invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
-  </div>
-  <div class="col-12">
-    <button id="btn" class="btn btn-primary" type="submit">Paiement</button>
-  </div>
-  
-</form>
+                contains.innerHTML +=`
+    <div #form>
+                <h4>Adresse de livraison</h4>
+                <form class="row g-3 form" action="post" type="submit"" method="post">
+        <div class="col-md-4">
+            <label for="validationServer01" class="form-label">Nom</label>
+            <input type="text" class="form-control is-valid" id="lastname" name="lastname" value="" required>
+            <div class="valid-feedback">
+            Looks good!
+            </div>
         </div>
+        <div class="col-md-4">
+            <label for="validationServer02" class="form-label">Prénom</label>
+            <input type="text" class="form-control is-valid" id="firstname" name="firtname" value="" required>
+            <div class="valid-feedback">
+            Looks good!
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <label for="validationServer03" class="form-label">Ville</label>
+            <input type="text" class="form-control is-invalid" id="city" name="city" aria-describedby="validationServer03Feedback" required>
+            <div id="validationServer03Feedback" class="invalid-feedback">
+            Oups ! Vous devez saisir votre ville ici.
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <label for="validationServer05" class="form-label">Code postal</label>
+            <input type="text" class="form-control is-invalid" id="adress" name="address" aria-describedby="validationServer05Feedback" required>
+            <div id="validationServer05Feedback" class="invalid-feedback">
+            Oups ! Vous devez saisir votre code postal ici
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+            <label class="form-check-label" for="invalidCheck3">
+                Agree to terms and conditions
+            </label>
+            <div id="invalidCheck3Feedback" class="reduce invalid-feedback">
+                You must agree before submitting.
+            </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button id="btn" class="btn btn-primary" type="submit">Paiement</button>
+        </div>
+        
+        </form>
+    </div>
         
         `
         //validation du formulaire
         const buttonForm = document.querySelector(".form");
         buttonForm.addEventListener('submit', e => {
             e.preventDefault();
-            form();
+            toSend();
         });
 
         // Recupération des objets products et contact 
         
-        function form() {
-            let contact = {
-               firstName: document.getElementById("firstname").value,
-                lastName: document.getElementById("lastname").value,
-                adress: document.getElementById("adress").value,
-                city: document.getElementById("city").value,
-                email: document.getElementById("email").value,
-            };
-        
+        function toSend() {
+            
+              let  firstname = document.getElementById("firstname").value
+              let  lastname = document.getElementById("lastname").value
+              let  adress = document.getElementById("adress").value
+              let  city = document.getElementById("city").value
+              let  email = document.getElementById("email").value
+
+            
             let products = [];
             if (sessionStorage.getItem('cartNumbers') !== null) {
                 let idElement = JSON.parse(sessionStorage.getItem('cartNumbers'));
                 
                 idElement.forEach( product => {
                     products.push(product._id);
-                })
-            }
-            // Assemblage des objets contact et product pour les envoyer dans le localstorage
-            
-            let object = JSON.stringify({
-                contact, products
-            })
-            orders(object);
-        };
+                })}
+                
+ // Assemblage des objets contact et product pour les envoyer dans le localstorage
+
+                const orders = {
+                    "contact": {
+                      "firstName": firstname,
+                      "lastName": lastname,
+                      "address": adress,
+                      "city": city,
+                      "email": email
+                    },
+                    "products": products
+                  }
+              
+          
         
         //Envoie de object vers la page de confirmation
            
-        function orders(object) {
+        const post = {
+            method: "POST",
+            body: JSON.stringify(orders),
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+          }
         
-            fetch("http://localhost:3000/api/teddies/order", {
+          fetch("http://localhost:3000/api/teddies/order", post)
+            .catch(() => {alert(error)})
+            .then((response) => response.json())
+            .then((res) => {
+              console.log(res)
+            //   localStorage.setItem('contact', JSON.stringify(res.contact));
+              localStorage.setItem('orderId', JSON.stringify(res.orderId));
+              localStorage.setItem('contact', JSON.stringify(res.contact));
+              let cartCost = localStorage.getItem('totalCost')
+              localStorage.setItem('total', cartCost);
+              window.location.replace("./confirmation.html");
 
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: object
             })
-            .then(res => response.json())
-            // .then(response => console.log(response.orderId))
-            .then(res => 
-                localStorage.setItem('orderID', response.orderId))
-               // localStorage.setItem('contact',response.contact);
-               
-                //let cartCost = localStorage.getItem('totalCost')
-               // localStorage.setItem('Total', JSON.stringify(cartCost));
-               
-
-            
-
-            .catch((e) => {
-                displayError();
-                console.log(e);
-            })
-            window.location.replace("./confirmation.html");
-           
-        } 
-        
-}
-    }
-    
-    onLoadCartNumbers()
-    displayCart()
-
-}
-
-    )
          };
-    
-     fetchData()
+}}; displayCart()
+
+})}; fetchData()

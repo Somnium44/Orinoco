@@ -1,8 +1,9 @@
 
  
-    let idOrder = localStorage.getItem('orderID')
-    console.log(idOrder)
-   // let cartCost = localStorage.getItem('totalCost')
+    
+    let orderId = localStorage.getItem('orderId')
+    console.log(orderId)
+    let cartCost = localStorage.getItem('totalCost')
 
     let container = document.getElementById("confirmation");
 
@@ -11,7 +12,7 @@
         container.innerHTML =   `
     <div class= "messagecontainer">
 
-        <p> Nous vous remercions pour votre commande n° <span > ${idOrder}</span>,
+        <p> Nous vous remercions pour votre commande n° <span > ${orderId}</span>,
         pour un montant total de <span >${cartCost/ 100}.00€!</span>
         </p>
                 
@@ -28,5 +29,5 @@
         </div>
         </div>` 
 
-        // localStorage.clear();   
+        localStorage.clear();  
 
