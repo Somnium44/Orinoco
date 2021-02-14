@@ -35,6 +35,8 @@ console.log(data);
             totalCost(items[i])
         })
     }
+
+    
     // Pour que les produits reste dans le panier meme apres le chargement
     function onLoadCartNumbers(){
         let productNumbers = localStorage.getItem('cartNumbers')
@@ -44,7 +46,7 @@ console.log(data);
         }
     }
     
-    //  Ajout de produit dans le panier
+    //  Ajout de produit visible dans l'icone panier
     function cartNumbers(product){
         let productNumbers = localStorage.getItem('cartNumbers');
     
@@ -87,8 +89,19 @@ console.log(data);
        
       
         localStorage.setItem("Quantity", JSON.stringify (cartItems))
+        
+        //Affichage d'un message si le panier est vide
+        if (document.getElementsByClassName('empty')[0].hasChildNodes()){
+            alert('Merci!')
+            // ... other code here
+          }   
+          else {
+            alert("Votre panier est vide");
+          }
     
     }
+
+         
     
     // Calcul du coût total 
     function totalCost(product){
@@ -109,14 +122,12 @@ console.log(data);
         }
     }
     
-    
+    //Affichage des information sur la page html
     function displayCart() {
         let cartItems = localStorage.getItem("Quantity");
         cartItems = JSON.parse(cartItems);
         let  productContainer = document.querySelector(".teddies");
-        let contains = document.querySelector(".contains");
         let cartCost = localStorage.getItem('totalCost')
-        console.log(cartItems);
         if(cartItems && productContainer) {
             productContainer.innerHTML = '';
             productContainer.innerHTML +=`
@@ -130,14 +141,17 @@ console.log(data);
             Object.values(cartItems).map(teddies => {
             productContainer.innerHTML += `
         
-          
-
+                <div class= "elements">
                 <div class= "items">
                <span>${teddies.name}</span>
                <span>${teddies.price/100}.00€</span>
                <span>${teddies.quantity}</span>
-                </div>
-           </div>
+                
+               </div>
+               <div>
+               <button  id= "delete">Supprimer</button>
+               </div>
+               </div>
             `
                 });
                 productContainer.innerHTML +=`
@@ -149,68 +163,13 @@ console.log(data);
                     ${cartCost/ 100}.00€
                 </div>
                 `
+        
 
-                contains.innerHTML +=`
-    <div #form>
-                <h4>Adresse de livraison</h4>
-                <form class="row g-3 form" action="post" type="submit"" method="post">
-        <div class="col-md-4">
-            <label for="validationServer01" class="form-label">Nom</label>
-            <input type="text" class="form-control is-valid" id="lastname" name="lastname" value="" required>
-            <div class="valid-feedback">
-            Looks good!
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationServer02" class="form-label">Prénom</label>
-            <input type="text" class="form-control is-valid" id="firstname" name="firtname" value="" required>
-            <div class="valid-feedback">
-            Looks good!
-            </div>
-        </div>
-        
-        <div class="col-md-6">
-            <label for="validationServer03" class="form-label">Ville</label>
-            <input type="text" class="form-control is-invalid" id="city" name="city" aria-describedby="validationServer03Feedback" required>
-            <div id="validationServer03Feedback" class="invalid-feedback">
-            Oups ! Vous devez saisir votre ville ici.
-            </div>
-        </div>
-        
-        <div class="col-md-3">
-            <label for="validationServer05" class="form-label">Code postal</label>
-            <input type="text" class="form-control is-invalid" id="adress" name="address" aria-describedby="validationServer05Feedback" required>
-            <div id="validationServer05Feedback" class="invalid-feedback">
-            Oups ! Vous devez saisir votre code postal ici
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
-        </div>
-        <div class="col-12">
-            <div class="form-check">
-            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-            <label class="form-check-label" for="invalidCheck3">
-                Agree to terms and conditions
-            </label>
-            <div id="invalidCheck3Feedback" class="reduce invalid-feedback">
-                You must agree before submitting.
-            </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <button id="btn" class="btn btn-primary" type="submit">Paiement</button>
-        </div>
-        
-        </form>
-    </div>
-        
-        `
         //validation du formulaire
         const buttonForm = document.querySelector(".form");
         buttonForm.addEventListener('submit', e => {
             e.preventDefault();
+            
             toSend();
         });
 
@@ -232,7 +191,7 @@ console.log(data);
                 idElement.forEach( product => {
                     products.push(product._id);
                 })}
-                
+
  // Assemblage des objets contact et product pour les envoyer dans le localstorage
 
                 const orders = {
@@ -253,7 +212,7 @@ console.log(data);
         const post = {
             method: "POST",
             body: JSON.stringify(orders),
-            headers: { "Content-Type": "application/json; charset=utf-8" },
+            headers: { "Content-Type": "application/json" },
           }
         
           fetch("http://localhost:3000/api/teddies/order", post)
@@ -261,8 +220,8 @@ console.log(data);
             .then((response) => response.json())
             .then((res) => {
               console.log(res)
-            //   localStorage.setItem('contact', JSON.stringify(res.contact));
               localStorage.setItem('orderId', JSON.stringify(res.orderId));
+              console.log('orderId')
               localStorage.setItem('contact', JSON.stringify(res.contact));
               let cartCost = localStorage.getItem('totalCost')
               localStorage.setItem('total', cartCost);

@@ -16,26 +16,29 @@ console.log(data);
 
 const html = data.map(teddies => {
     return `
-    
-    <div class="card" style="width: 20rem;">
-    <div class="">
-  <img src="${teddies.imageUrl}" class="card-img-top" alt="${teddies.name}">
-  <div class="card-body">
-    <h5 class="card-title">${teddies.name}</h5>
-    <p class="card-text">${teddies.description}</p>
-    <p>${teddies.price / 100}.00 €</p>
-    <a href="produit.html?id=${teddies._id}" class="btn btn-primary">Go somewhere</a>
+  <div class="card" style="width: 22rem; margin:10px; margin-top:3%;">
+    <div class="col">
+    <img src="${teddies.imageUrl}" class="card-img-top product-img" alt="${teddies.name}">
+      <div class="card-body">
+          <h5 class="card-title">${teddies.name}</h5>
+          <p class="card-text">${teddies.description}</p>
+          <p>${teddies.price / 100}.00 €</p>
+          <a href="produit.html?id=${teddies._id}" class="btn btn-primary">Découvrir</a>
+      </div>
   </div>
 </div>
-</div>
     `
-}).join('')
+})
 
 document.getElementById('td').insertAdjacentHTML("afterBegin", html);
  })
+
+
  .catch(error => {
 console.log(error)
  });
+
+
 }
 
 fetchData();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
     <title>Panier</title>
-    <link href="style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" media="screen and (max-width: 1280px)">
     <link rel="stylesheet" href="bootstrap.min.css">    
 </head>
 <body>
@@ -20,13 +20,78 @@
         </header>
         <div class="container">
        <div class="products-container">
-           <div class="teddies"></div>
-           <div class="contains"></div>
+           <div class="teddies">
+            <span class="empty">Votre panier est actuellement vide.</span>
+           </div>
+           <div class="contains">
+              <script>
+                  let form = document.querySelector('.contains');
+
+form.innerHTML =`
+<div #form>
+<h4>Adresse de livraison</h4>
+<form class="row g-3 form" action="post" type="submit"" method="post">
+
+
+<div class="col-md-4">
+<label for="validationServer01" class="form-label">Nom</label>
+<input type="text" class="form-control " id="lastname" name="lastname" value="" required>
+<div class="valid-feedback">
+
+</div>
+</div>
+<div class="col-md-4">
+<label for="validationServer02" class="form-label">Prénom</label>
+<input type="text" class="form-control " id="firstname" name="firtname" value="" required>
+<div class="valid-feedback">
+
+</div>
+</div>
+
+<div class="col-md-6">
+<label for="validationServer03" class="form-label">Ville</label>
+<input type="text" class="form-control " id="city" name="city" aria-describedby="validationServer03Feedback" required>
+<div id="validationServer03Feedback" class="invalid-feedback">
+
+</div>
+</div>
+
+<div class="col-md-3">
+<label for="validationServer05" class="form-label">Code postal</label>
+<input type="text" class="form-control " id="adress" name="address" aria-describedby="validationServer05Feedback" required>
+<div id="validationServer05Feedback" class="invalid-feedback">
+</div>
+</div>
+<div class="col-md-6">
+<label for="inputEmail4" class="form-label">Email</label>
+<input type="email" class="form-control" id="email" name="email">
+</div>
+<div class="col-12">
+<div class="form-check">
+<input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+<label class="form-check-label" for="invalidCheck3">
+Agree to terms and conditions
+</label>
+<div id="invalidCheck3Feedback" class="reduce invalid-feedback">
+
+</div>
+</div>
+</div>
+<div class="col-12">
+<button id="btn" class="btn btn-primary" type="submit">Paiement</button>
+</div>
+
+</form>
+</div>
+
+`
+              </script>
+           </div>
        </div>
       
     </div>
     <footer>
-            <div>
+            <div class="d">
                 <h6>Acheter</h6>
                 <ul>
                     <li><a href="#"> Cartes cadeaux</a></li>
