@@ -13,9 +13,9 @@ if(!response.ok) {
 console.log(data);
 
 //Recuperation des données de l'API
-
+let  td = document.querySelector("#td");
 const html = data.map(teddies => {
-    return `
+    td.innerHTML += `
   <div class="card" style="width: 22rem; margin:10px; margin-top:3%;">
     <div class="col">
     <img src="${teddies.imageUrl}" class="card-img-top product-img" alt="${teddies.name}">
@@ -29,9 +29,8 @@ const html = data.map(teddies => {
 </div>
     `
 })
-
-document.getElementById('td').insertAdjacentHTML("afterBegin", html);
  })
+ 
 
 
  .catch(error => {

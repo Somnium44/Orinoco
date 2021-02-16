@@ -9,9 +9,8 @@ body{
 .container{
     margin-left: auto;
     margin-right: auto;
- 
-
-
+    
+   
 }
 
 
@@ -67,16 +66,22 @@ header{
     height: 100%;
     margin-bottom: 100px;
     margin: auto;
-    display: flex;
-    
+    display: flex; 
 }
 
 #td{
-    display: flex;
+    margin-top: 4%;
+    display: grid;
+  grid-template-columns: repeat(auto-fill, 340px);
+  grid-column-gap: 10px;
+  grid-row-gap: 1em;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
-
-
+#td .card{
+  align-self: center;
+  justify-self: center;
+}
 
 .linkcart{
     text-decoration: none;
@@ -100,16 +105,19 @@ margin-bottom: 5%;
 
 footer{
     background-color: #F3E9F1;
-    padding-top: 2%;
     padding-bottom:2% ;
     display: flex;
     justify-content:space-around ;
     padding-top: 3%;
     margin-top: 4%;
+    padding: 4%;
+   
 }
 footer ul {
     list-style: none;
     padding: 0;
+    margin-left: 0.1%;
+    width: 100%;
 }
 
 footer ul li a{
@@ -212,7 +220,7 @@ align-items: center;
 }
 
 #delete{
-margin-left: 20%;
+margin-left: 30%;
 color: black;
 border: transparent;
 background-color:rgb(243, 233, 241);
@@ -319,22 +327,22 @@ height: 100%;
         width: 90%;
         margin: auto;
     }
-    footer ul {
-        width: 80%;
-        
-    }
+  
  }
 
- @media (max-width: 353px){
+ @media (max-width: 401px){
      footer {
-         display: block;
-         
-     }
-     footer ul {
-         margin: auto;
-         margin-bottom: 4%;
-     }
-     footer h6{
-         margin-left:10% ;
-     }
+         display: block;     
  }
+
+
+ }
+
+ @media (max-width: 642px){
+   
+footer ul:nth-child(2) {
+   
+   width: 90%;
+}
+
+}

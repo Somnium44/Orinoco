@@ -7,16 +7,12 @@
 
     let container = document.getElementById("confirmation");
 
-         
-
         container.innerHTML =   `
     <div class= "messagecontainer">
 
         <p> Nous vous remercions pour votre commande n° <span > ${orderId}</span>,
         pour un montant total de <span >${cartCost/ 100}.00€!</span>
         </p>
-                
-            
         <div>
         <p>
         Compte tenu de la situation actuelle, nos délais de préparation et de livraison peuvent être allongés.</br>
@@ -24,7 +20,7 @@
         Vous aurez très prochainement des nouvelles dès que celle-ci sera prête à être expédiée.</p></div>
         <div>
         <p>
-        Très belle journée et à bientôt sur <a class= "linkOrinoco">Orinoco.com
+        Très belle journée et à bientôt sur <a class= "linkOrinoco" href="index.html">Orinoco.com
         </a> </p>
         </div>
         </div>` 

@@ -1,12 +1,10 @@
-  
 // Recuperation de l'id par l'URL
 
     const Url = new URLSearchParams (window.location.search);
     let id = Url.get("id")
     console.log(id);
     
-    //Recuperation de l'API
- 
+//Recuperation de l'API
 
     fetch("http://localhost:3000/api/teddies/" + id)
     .then(response => {
@@ -19,16 +17,15 @@
     .then(data => {
     console.log(data);
 
+//Affichage des informations sur la page html
 
-//Affichage des information sur la page html
+    let teddies = data
 
-let teddies = data
-
-    let div = document.createElement("div")
-    let gettd = document.getElementById("productdisplay")
-    gettd.appendChild(div).style="max-width: 45%;"
-    div.classList.add('card')
-    div.classList.add('mb-3')
+        let div = document.createElement("div")
+        let gettd = document.getElementById("productdisplay")
+        gettd.appendChild(div).style="max-width: 22rem; "
+        div.classList.add('card')
+        div.classList.add('mb-3')
 
         let _id = document.createElement('a')
         _id.href = teddies._id
@@ -52,24 +49,25 @@ let teddies = data
         let descriptionDiv = document.createElement('div')
          descriptionDiv.classList.add('card-body')
          descriptionDiv.appendChild(name).style.fontWeight = "bold"
-       row.appendChild(descriptionDiv)
+        row.appendChild(descriptionDiv)
         let col8 = document.createElement('div')
         col8.classList.add('col-md-8')
         row.appendChild(col8)
         col8.appendChild(descriptionDiv)
         
-       let description = document.createElement('p')
-       description.innerHTML = teddies.description;
-       descriptionDiv.appendChild(description)
-       description.classList.add('card-text')
+        let description = document.createElement('p')
+        description.innerHTML = teddies.description;
+        descriptionDiv.appendChild(description)
+        description.classList.add('card-text')
 
-       let price = document.createElement('p')
-       price.innerHTML =  `${teddies.price / 100}.00€`;
-       price.classList.add('card-text')
+        let price = document.createElement('p')
+        price.innerHTML =  `${teddies.price / 100}.00€`;
+        price.classList.add('card-text')
 
-       descriptionDiv.appendChild(price).style.fontWeight = "bold"
+        descriptionDiv.appendChild(price).style.fontWeight = "bold"
 
-       
+// Selection de la couleur
+
         let choice = document.createElement('div')
         choice.classList.add('colorChoice')
         let label = document.createElement('label')
@@ -93,8 +91,9 @@ let teddies = data
      });
 
 // Bouton panier
+
        let addCart = document.createElement('a')
-       addCart.classList.add('add-cart')
+       addCart.classList.add('add-card')
        addCart.classList.add('btn')
        addCart.classList.add('btn-primary')
        addCart.href = '#'
@@ -107,9 +106,9 @@ let teddies = data
        addCartBtn.classList.add('addCartBtn')
        addCartBtn.appendChild(addCart)
 
-    // Ajout de quantity dans les objects
+// Ajout de quantity dans les objects
        
-       let products =[ {
+       let products =[{
         _id: teddies._id,
         imageUrl: teddies.imageUrl,
         name: teddies.name,
@@ -120,7 +119,7 @@ let teddies = data
  
 // Ajout des produits dans le panier
 
-let carts = document.querySelectorAll('.add-cart')
+let carts = document.querySelectorAll('.add-card')
 
 for (let i=0; i < carts.length; i++ ) {
     carts[i].addEventListener('click', () => {
@@ -130,7 +129,7 @@ for (let i=0; i < carts.length; i++ ) {
 }
 
 // Pour que les produits reste dans le panier meme apres le chargement de la page 
-//  Ajout de produit dans le panier
+//  Affichage du nombre de produit dans l'icone panier
 function cartNumbers(product){
     let productNumbers = localStorage.getItem('cartNumbers');
 
@@ -145,17 +144,15 @@ function cartNumbers(product){
     }
 
     setItems(product)
-    
 }
 
-// Affichage du nombre de produit dans le local storage // Affichage de la totalité des descriptions du produit dans le local storage
+// Affichage de la totalité des descriptions du produit dans le local storage
 function setItems(product){
     let cartItems = localStorage.getItem('Quantity');
     cartItems = JSON.parse(cartItems)
     console.log("Le produit est", cartItems);
 
    if(cartItems != null) {
-    //    Prise en compte de l'ensemble des produits ajoutés au panier
        if(cartItems[product.name] == undefined ) {
            cartItems = {
                ...cartItems,
@@ -176,12 +173,12 @@ function setItems(product){
 // Calcul du coût total 
 function totalCost(teddies){
 
-let cartCost = localStorage.getItem('totalCost')
+    let cartCost = localStorage.getItem('totalCost')
+
 //Conversion de string en number
 
     console.log("Le montant est de", cartCost)
-    console.log(typeof cartCost)
-    // console.log("Le prix du produit est", `${teddies.price / 100}.00 €`)
+    console.log("Le prix du produit est", `${teddies.price / 100}.00 €`)
 
     if(cartCost != null) {
         cartCost = parseInt(cartCost);

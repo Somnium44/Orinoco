@@ -1,5 +1,4 @@
-
-       function fetchData(){
+function fetchData(){
 fetch("http://localhost:3000/api/teddies")
 .then(response => {
     console.log(response);
@@ -11,118 +10,17 @@ if(!response.ok) {
 .then(data => {
 console.log(data);
     
-    //Affichage des information sur la page html
-    
-    let teddies = data
-    
-        
-    let items =[ {
-        _id: teddies._id,
-        imageUrl: teddies.imageUrl,
-        name: teddies.name,
-        price: teddies.price,
-        quantity: 0,
-        colors: teddies.colors,
-    }]
-           
-    // Ajout des produits dans le panier
-    
-    let carts = document.querySelectorAll('.card-add')
-    
-    for (let i=0; i < carts.length; i++ ) {
-        carts[i].addEventListener('click', () => {
-            cartNumbers(items[i]);
-            totalCost(items[i])
-        })
-    }
-
-    
-    // Pour que les produits reste dans le panier meme apres le chargement
+// Pour que les produits reste dans le panier meme apres le chargement
     function onLoadCartNumbers(){
         let productNumbers = localStorage.getItem('cartNumbers')
     
         if(productNumbers) {
-            document.querySelector('.cart span').textContent = productNumbers;
+          document.querySelector('.cart span').textContent = productNumbers;
         }
     }
+ onLoadCartNumbers()
     
-    //  Ajout de produit visible dans l'icone panier
-    function cartNumbers(product){
-        let productNumbers = localStorage.getItem('cartNumbers');
-    
-        productNumbers = parseInt(productNumbers);
-    
-        if( productNumbers ){
-            localStorage.setItem('cartNumbers', productNumbers + 1);
-            document.querySelector('.cart span').textContent = productNumbers + 1;
-        } else {
-            localStorage.setItem('cartNumbers', 1);
-            document.querySelector('.cart span').textContent = 1;
-        }
-    
-        setItems(product)
-        
-        
-    }
-     onLoadCartNumbers()
-    // Affichage du nombre de produit dans le local storage // Affichage de la totalité des descriptions du produit dans le local storage
-    function setItems(product){
-        let cartItems = localStorage.getItem('Quantity');
-        cartItems = JSON.parse(cartItems)
-        console.log("Le produit est", cartItems);
-    
-       if(cartItems != null) {
-        //    Prise en compte de l'ensemble des produits ajoutés au panier
-           if(cartItems[product.name] == undefined ) {
-               cartItems = {
-                   ...cartItems,
-                   [product.name]:product
-               }
-           }
-           cartItems[product.name].quantity += 1;
-       } else {
-            product.quantity = 1;
-        cartItems = {
-            [product.name]: product
-        }
-       }
-       
-      
-        localStorage.setItem("Quantity", JSON.stringify (cartItems))
-        
-        //Affichage d'un message si le panier est vide
-        if (document.getElementsByClassName('empty')[0].hasChildNodes()){
-            alert('Merci!')
-            // ... other code here
-          }   
-          else {
-            alert("Votre panier est vide");
-          }
-    
-    }
-
-         
-    
-    // Calcul du coût total 
-    function totalCost(product){
-    
-    let cartCost = localStorage.getItem('totalCost')
-    //Conversion de string en number
-    
-        console.log("Le montant est de", cartCost)
-        console.log(typeof cartCost)
-        // console.log("Le prix du produit est", `${teddies.price / 100}.00 €`)
-    
-    
-        if(cartCost != null) {
-            cartCost = parseInt(cartCost);
-            localStorage.setItem("totalCost", cartCost + product.price);
-        } else {
-            localStorage.setItem("totalCost", product.price);
-        }
-    }
-    
-    //Affichage des information sur la page html
+//Affichage des information sur la page html
     function displayCart() {
         let cartItems = localStorage.getItem("Quantity");
         cartItems = JSON.parse(cartItems);
@@ -149,7 +47,7 @@ console.log(data);
                 
                </div>
                <div>
-               <button  id= "delete">Supprimer</button>
+               <button  id= "delete"><i class="fas fa-times"></i></button>
                </div>
                </div>
             `
@@ -163,9 +61,9 @@ console.log(data);
                     ${cartCost/ 100}.00€
                 </div>
                 `
-        
+    
+//validation du formulaire
 
-        //validation du formulaire
         const buttonForm = document.querySelector(".form");
         buttonForm.addEventListener('submit', e => {
             e.preventDefault();
@@ -173,7 +71,7 @@ console.log(data);
             toSend();
         });
 
-        // Recupération des objets products et contact 
+// Recupération des objets products et contact 
         
         function toSend() {
             
@@ -192,7 +90,7 @@ console.log(data);
                     products.push(product._id);
                 })}
 
- // Assemblage des objets contact et product pour les envoyer dans le localstorage
+// Assemblage des objets contact et product pour les envoyer dans le localstorage
 
                 const orders = {
                     "contact": {
@@ -205,9 +103,7 @@ console.log(data);
                     "products": products
                   }
               
-          
-        
-        //Envoie de object vers la page de confirmation
+ //Envoie de object vers la page de confirmation
            
         const post = {
             method: "POST",
