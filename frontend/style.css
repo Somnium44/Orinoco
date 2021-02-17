@@ -61,12 +61,32 @@ header{
     width: 90%;
     height: 90%;
 }
+
+.products
+{
+    background-color: #F3E9F1;
+    padding: 10px;
+    padding-top: 25px;
+    margin-bottom: 20px;
+    width: 28%;
+    height: 50%;
+}
+
 .article{
     width: 100%;
     height: 100%;
     margin-bottom: 100px;
     margin: auto;
     display: flex; 
+}
+
+.article{
+    background-color: #F3E9F1;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 65%;
+    height: 50%;
+
 }
 
 #td{

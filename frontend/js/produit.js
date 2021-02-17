@@ -128,7 +128,6 @@ for (let i=0; i < carts.length; i++ ) {
     })
 }
 
-// Pour que les produits reste dans le panier meme apres le chargement de la page 
 //  Affichage du nombre de produit dans l'icone panier
 function cartNumbers(product){
     let productNumbers = localStorage.getItem('cartNumbers');
@@ -182,6 +181,7 @@ function totalCost(teddies){
 
     if(cartCost != null) {
         cartCost = parseInt(cartCost);
+        // On met cartCost+teddies.price pour que chaque nouveaux produit ajouté soit comptabilisé
         localStorage.setItem('totalCost', cartCost + teddies.price)
     } else {
         localStorage.setItem("totalCost", teddies.price)

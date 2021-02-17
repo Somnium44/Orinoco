@@ -4,7 +4,8 @@
     let orderId = localStorage.getItem('orderId')
     console.log(orderId)
     let cartCost = localStorage.getItem('totalCost')
-
+    let contact = localStorage.getItem('contact')
+    console.log(contact)
     let container = document.getElementById("confirmation");
 
         container.innerHTML =   `
@@ -25,5 +26,5 @@
         </div>
         </div>` 
 
-        localStorage.clear();  
+        // localStorage.clear();  
 
