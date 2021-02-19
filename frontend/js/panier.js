@@ -1,12 +1,12 @@
 function fetchData(){
-fetch("http://localhost:3000/api/teddies")
-.then(response => {
-    console.log(response);
-if(!response.ok) {
-    throw Error("ERROR");
-}
- return response.json();
-})
+    fetch("http://localhost:3000/api/teddies")
+    .then(response => {
+        console.log(response);
+    if(!response.ok) {
+        throw Error("ERROR");
+    }
+    return response.json();
+    })
 .then(data => {
 console.log(data);
     
@@ -29,8 +29,8 @@ console.log(data);
         if(cartItems && productContainer) {
             productContainer.innerHTML = '';
             productContainer.innerHTML +=`
+            <h4>Mon panier</h4>
             <div class="template">
-                <h4>Mon panier</h4>
                 <div class="titleitems">
                 <h6>Produit(s)</h6>
                 <h6>Prix</h6>
@@ -39,17 +39,15 @@ console.log(data);
             Object.values(cartItems).map(teddies => {
             productContainer.innerHTML += `
         
-                <div class= "elements">
+            <div class= "elements">
                 <div class= "items">
-               <span>${teddies.name}</span>
-               <span>${teddies.price/100}.00€</span>
-               <span>${teddies.quantity}</span>
-                
+              
+                    <div productinbasket><img src="${teddies.imageUrl}" class="productImg" alt="${teddies.name}"><div class="nameofproduct"> ${teddies.name}</div></div>
+                    <span>${teddies.price/100}.00€</span>
+                    <span>${teddies.quantity}</span>
                </div>
-               <div>
                <button  id= "delete"><i class="fas fa-times"></i></button>
-               </div>
-               </div>
+            </div>
             `
                 });
                 productContainer.innerHTML +=`
